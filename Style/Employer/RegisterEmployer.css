@@ -1,0 +1,138 @@
+﻿* {
+    font-family: "Inter", sans-serif;
+}
+.navbar {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: solid 2px;
+}
+
+.feature-link, .profile-link {
+    display: flex;
+    gap: 25px;
+}
+
+.button-feature {
+    border: none;
+    background-color: white;
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.worksphere-logo {
+    width: 30%;
+}
+.container {
+    margin: 5% 10%;
+    box-shadow: 0px 0px 10px 15px rgb(230,230,230);
+    padding: 25px 80px;
+    padding-bottom: 100px;
+    border-radius: 20px;
+}
+
+.container h2 {
+    font-size: 50px;
+    font-weight: 800;
+}
+
+.register-detail {
+    background-color: rgb(243,243,243);
+    display: flex;
+    flex-direction: column;
+    padding: 0px 40px;
+    padding-bottom: 40px;
+    height: 160vh;
+    justify-content: space-evenly;
+    border-radius: 20px;
+    gap: 20px;
+}
+
+.register-detail h4 {
+    font-size: 40px;
+    margin: 30px 0px;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.name-age-input {
+    display: flex;
+    justify-content: space-between;
+}
+
+.tb-name, .tb-age {
+    height: 55px;
+    width: 43%;
+    padding: 0px 20px;
+    font-size: 18px;
+    border: none;
+}
+
+.tb-input {
+    height: 55px;
+    padding: 0px 20px;
+    font-size: 18px;
+    border: none;
+}
+
+.button-upload {
+    align-self: start;
+    font-size: 20px;
+    padding: 20px 30px;
+    border-radius: 40px;
+    border: none;
+    background-color: white;
+    font-weight: 500;
+}
+
+.button-upload:hover {
+    cursor: pointer;
+    background-color: lightgrey;
+    transition: 0.5s;
+}
+
+.button-register {
+    align-self: end;
+    font-size: 20px;
+    padding: 20px 30px;
+    border-radius: 40px;
+    border: none;
+    background-color: white;
+    font-weight: 500;
+}
+
+.button-register:hover {
+    cursor: pointer;
+    background-color: lightgrey;
+    transition: 0.5s;
+}
+
+.label-error {
+    margin-top: 5px;
+    margin-left: 20px;
+    color: red;
+    font-weight: 400;
+    font-size: 18px;
+}
+
+.button-back {
+    background-color: white;
+    font-weight: 500;
+    font-size: 18px;
+    margin-top: 30px;
+    border-radius: 40px;
+    border: none;
+    padding: 20px 30px;
+}
+
+.button-register:hover {
+    cursor: pointer;
+    background-color: lightgrey;
+    transition: 0.5s;
+}

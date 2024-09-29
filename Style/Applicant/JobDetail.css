@@ -1,0 +1,230 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter';
+}
+
+.body {
+    display: flex;
+}
+
+/* Top */
+
+.top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20vh;
+    background-color: #F5F5F5;
+}
+
+.top-container {
+    display: flex;
+    width: 80vw;
+}
+
+    .top-container .find-jobs {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+    }
+
+.find-jobs .txtbox,
+.find-jobs .ddl {
+    width: 15vw;
+    padding: 0.5rem;
+    font-size: 18px;
+    border: none;
+}
+
+.find-jobs .btn {
+    width: 8vw;
+    padding: 0.5rem;
+    font-size: 18px;
+    background-color: #4CD681;
+    border: none;
+    font-weight: 600;
+}
+
+.find-jobs .txtbox::placeholder {
+    font-size: 18px;
+    color: black;
+}
+
+/* Bottom */
+.bottom {
+    display: flex;
+    align-items: center;
+    padding: 6rem 6rem 2rem 6rem;
+}
+
+    .bottom .bottom-container {
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+        width: 100%;
+    }
+
+.bottom-container .job-found h1 {
+    font-size: 40px;
+}
+
+.bottom-container .job-found h5 {
+    color: #4CD681;
+}
+
+/* All Jobs */
+
+.all-jobs {
+    display: flex;
+    gap: 3rem;
+}
+
+    /* Left */
+    .all-jobs .left {
+    }
+
+        .all-jobs .left .jobs {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            overflow: hidden;
+            overflow-y: scroll;
+            height: 70vh;
+            padding: 2rem;
+            /*border: 0.5px solid grey;*/
+            border-radius: 5px;
+            box-shadow: 10px 10px 40px 0px rgba(0, 0, 0, 0.5);
+        }
+
+        .all-jobs .left .jobs-container {
+            display: flex;
+            flex-direction: column;
+            background-color: #F5F5F5;
+            gap: 1rem;
+            width: 22vw;
+            padding: 1rem;
+            border-radius: 20px;
+        }
+
+        .all-jobs .left .upper {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+            .all-jobs .left .upper .title h3 {
+                font-size: 24px;
+            }
+
+            .all-jobs .left .upper .title h5 {
+                font-size: 14px;
+            }
+
+        .all-jobs .left .lower {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .all-jobs .left .lower-div {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .all-jobs .left .jobs-container a {
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            font-size: 16px;
+            font-weight: 500;
+            width: 5vw;
+            background-color: #4CD681;
+            text-align: center;
+            color: black;
+            border-radius: 20px;
+        }
+
+    /* Right */
+    .all-jobs .right {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+    }
+
+        .all-jobs .right .job-detail {
+            display: flex;
+            background-color: #F5F5F5;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 10px 10px 40px 0px rgba(0, 0, 0, 0.5);
+        }
+
+.job-detail .detail-container {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.detail-container .upper {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+    .detail-container .upper .upper-title {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+    }
+
+        .detail-container .upper .upper-title img {
+            width: 20%;
+        }
+
+        .detail-container .upper .upper-title h3 {
+            font-size: 40px;
+        }
+
+        .detail-container .upper .upper-title h4 {
+            font-size: 25px;
+        }
+
+    .detail-container .upper .upper-description {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+        .detail-container .upper .upper-description .lower-div {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+            .detail-container .upper .upper-description .lower-div img {
+                width: 30px;
+            }
+
+.detail-container .lower p {
+    width: 45vw;
+    text-align: justify;
+    line-height: 200%;
+}
+
+.detail-container .apply {
+    display: flex;
+    justify-content: flex-end;
+}
+
+    .detail-container .apply .btn {
+        text-decoration: none;
+        padding: 0.5rem 1rem;
+        font-size: 16px;
+        font-weight: 500;
+        width: 10vw;
+        background-color: #4CD681;
+        text-align: center;
+        color: black;
+        border-radius: 20px;
+        border: none;
+    }

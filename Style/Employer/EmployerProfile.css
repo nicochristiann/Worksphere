@@ -1,0 +1,137 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+.container {
+    padding: 0 50px;
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+}
+
+.top-with-logout {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+    padding: 50px;
+    background-color: #ededed;
+}
+
+.top-container {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+    .top-container .left {
+        display: flex;
+        gap: 50px;
+    }
+
+.profile-picture {
+    width: 240px;
+    height: 240px;
+    aspect-ratio: 1;
+    border-radius: 200px;
+    background-color: #d9d9d9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+    .profile-picture img {
+        width: 50%;
+    }
+
+.identity-container-1 {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    align-self: center;
+    height: 240px;
+    justify-content: space-between;
+    margin-top: 40px;
+}
+
+    .identity-container-1 .top {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+
+.icon {
+    width: 36px;
+    height: auto;
+    aspect-ratio: 1;
+}
+
+.name {
+    font-weight: 600;
+    font-size: 3rem;
+}
+
+.brief-description {
+    color: #a3a3a3;
+    font-size: 1.8rem;
+    font-weight: 300;
+}
+
+.right {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+}
+
+.divider {
+    display: block;
+    width: 2px;
+    height: 100%;
+    margin: 0 30px;
+    background-color: #d4d4d4;
+    position: absolute;
+}
+
+.identity-container-2 {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-left: 60px;
+    padding: 16px 0;
+}
+
+    .identity-container-2 .row {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+    }
+
+        .identity-container-2 .row .row-title {
+            display: inline-block;
+            width: 180px;
+        }
+
+        .identity-container-2 .row .row-info {
+            color: #918F8F;
+        }
+
+.logout-button {
+    background-color: #FF0000;
+    border: none;
+    border-radius: 28px;
+    color: white;
+    padding: 14px 40px;
+    align-self: end;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.socials-row {
+    margin-top: 70px;
+}

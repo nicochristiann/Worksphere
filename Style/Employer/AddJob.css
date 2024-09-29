@@ -1,0 +1,85 @@
+﻿* {
+    font-family: "Inter", sans-serif;
+}
+
+.container {
+    margin: 5% 10%;
+    box-shadow: 0px 0px 10px 15px rgb(230,230,230);
+    padding: 25px 80px;
+    padding-bottom: 100px;
+    border-radius: 20px;
+}
+
+.container h2 {
+    font-size: 50px;
+    font-weight: 800;
+}
+
+.addnewjob-detail {
+    background-color: rgb(243,243,243);
+    display: flex;
+    flex-direction: column;
+    padding: 0px 40px;
+    padding-bottom: 40px;
+    height: 160vh;
+    justify-content: space-evenly;
+    border-radius: 20px;
+    gap: 20px;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.tb-input {
+    height: 55px;
+    padding: 0px 20px;
+    font-size: 18px;
+    border: none;
+}
+
+.salary-input {
+    height: 55px;
+    padding: 0px 20px;
+    font-size: 18px;
+    border: none;
+    width: 300px;
+}
+
+.ddl-input {
+    height: 55px;
+    padding: 0px 20px;
+    font-size: 18px;
+    border: none;
+    width: 350px;
+}
+
+.jobtype-salary-input {
+    display: flex;
+    justify-content: space-between;
+}
+
+.label-error {
+    margin-top: 5px;
+    margin-left: 20px;
+    color: red;
+    font-weight: 400;
+    font-size: 18px;
+}
+
+.button-postjob {
+    align-self: end;
+    font-size: 20px;
+    padding: 20px 30px;
+    border-radius: 40px;
+    border: none;
+    background-color: white;
+    font-weight: 500;
+}
+
+.button-postjob:hover {
+    cursor: pointer;
+    background-color: lightgrey;
+    transition: 0.5s;
+}

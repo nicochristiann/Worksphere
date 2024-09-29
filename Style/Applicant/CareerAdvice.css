@@ -1,0 +1,123 @@
+﻿* {
+    font-family: "Inter", sans-serif;
+}
+
+.container {
+    margin: 150px;
+}
+
+.container h2 {
+    font-size: 43px;
+    font-weight: 700;
+}
+
+.Advice p {
+    font-size: 15px;
+    font-weight: 300;
+}
+
+.CVtips {
+    padding-top: 50px;
+}
+
+.CVtips h3 {
+    font-size: 25px;
+}
+
+.CVtips img {
+    width: 365px;
+    height: 480px;
+}
+
+.column {
+    display: flex;
+    align-items: center;
+    gap: 2em;
+    flex-grow: 1;
+}
+
+.interview-prep h3 {
+    font-size: 40px;
+}
+
+.main-container {
+    display: flex;
+    column-gap: 200px;
+}
+
+.container1 {
+    float: left;
+}
+
+.container1 h4 {
+    font-size: 25px;
+    font-weight: 500;
+}
+
+.questions {
+    border-radius: 50px;
+    background: #4CD681;
+    border: 1px solid;
+    width: 400px;
+    height: 40px;
+}
+
+.questions p{
+    text-align: center;
+    font-weight: 700;
+    font-size: 25px;
+    margin: auto;
+    padding-top: 5px;
+}
+
+.redirect-button {
+    background: #D9D9D9;
+    border-radius: 20px;
+    width: 450px;
+    height: 150px;
+    padding-top: 1px;
+    padding-left: 15px;
+    padding-right: 45px;
+    padding-bottom: 20px;
+    margin-top: 40px;
+    font-weight: 700;
+    font-size: 25px;
+}
+
+.button-start{
+    background-color: #4CD681;
+    border: 1px solid;
+    border-radius: 15px;
+    padding: 3px 1px;
+    width: 80px;
+    font-weight: 700;
+    margin-top: 1px;
+}
+
+.button-start:hover{
+    cursor: pointer;
+    background-color: #8BFFB7;
+    transition: 0.1s;
+    color: white;
+    border: 1px solid;
+}
+
+.illustration {
+    margin-top: 55px;
+}
+
+.illustration img {
+    width: 450px;
+    height: 300px;
+}
+.container2 {
+    float: right;
+    background-color: #ECECEC;
+    width: 900px;
+    border-radius: 30px;
+}
+
+.container2 h4 {
+    font-size: 25px;
+    font-weight: 500;
+}
