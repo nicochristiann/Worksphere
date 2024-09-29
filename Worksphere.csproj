@@ -1,0 +1,378 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{01965D49-FEBC-4991-B1E5-7A98C736115C}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Worksphere</RootNamespace>
+    <AssemblyName>Worksphere</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44356</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\WorksphereDB.mdf" />
+    <Content Include="App_Data\WorksphereDB_log.ldf">
+      <DependentUpon>WorksphereDB.mdf</DependentUpon>
+    </Content>
+    <Content Include="Assets\arrow_circle_right.png" />
+    <Content Include="Assets\calendar-icon.png" />
+    <Content Include="Assets\clock-icon.png" />
+    <Content Include="Assets\fb-logo.png" />
+    <Content Include="Assets\fr-flag.png" />
+    <Content Include="Assets\github-logo.png" />
+    <Content Include="Assets\id-flag.png" />
+    <Content Include="Assets\line-logo.png" />
+    <Content Include="Assets\linkedin-logo.png" />
+    <Content Include="Assets\location-icon.png" />
+    <Content Include="Assets\mail-icon.png" />
+    <Content Include="Assets\major-icon.png" />
+    <Content Include="Assets\person-icon.png" />
+    <Content Include="Assets\phone-icon.png" />
+    <Content Include="Assets\profile-icon.png" />
+    <Content Include="Assets\uk-flag.png" />
+    <Content Include="Assets\user.png" />
+    <Content Include="Assets\x-logo.png" />
+    <Content Include="Model\WorksphereModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>WorksphereModel.Context.cs</LastGenOutput>
+      <DependentUpon>WorksphereModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Model\WorksphereModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>WorksphereModel.edmx</DependentUpon>
+      <LastGenOutput>WorksphereModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="Script\HomeBeforeLoginScript.js" />
+    <Content Include="Style\Applicant\ApplicantProfile.css" />
+    <Content Include="Style\Applicant\ApplicantRegister.css" />
+    <Content Include="Style\Applicant\CareerAdvice.css" />
+    <Content Include="Style\Applicant\CommunityStyle.css" />
+    <Content Include="Style\Applicant\HomeApplicant.css" />
+    <Content Include="Style\Applicant\JobDetail.css" />
+    <Content Include="Style\Applicant\LoginApplicant.css" />
+    <Content Include="Style\Applicant\SearchJob.css" />
+    <Content Include="Style\Employer\AddJob.css" />
+    <Content Include="Style\Employer\EmployerProfile.css" />
+    <Content Include="Style\Employer\HomeEmployer.css" />
+    <Content Include="Style\Employer\LoginRecruiter.css" />
+    <Content Include="Style\Employer\RegisterEmployer.css" />
+    <Content Include="Style\Employer\ViewApplicant.css" />
+    <Content Include="Style\HomeBeforeLogin.css" />
+    <Content Include="Style\master.css" />
+    <Content Include="Views\Applicant\ApplicantLogin.aspx" />
+    <Content Include="Views\Applicant\ApplicantProfile.aspx" />
+    <Content Include="Views\Applicant\ApplicantRegister.aspx" />
+    <Content Include="Views\Applicant\CareerAdvice.aspx" />
+    <Content Include="Views\Applicant\CommunityPage.aspx" />
+    <Content Include="Views\Applicant\HomeApplicant.aspx" />
+    <Content Include="Views\Applicant\JobDetail.aspx" />
+    <Content Include="Views\Applicant\SearchJob.aspx" />
+    <Content Include="Views\Employer\AddJob.aspx" />
+    <Content Include="Views\Employer\EmployerProfile.aspx" />
+    <Content Include="Views\Employer\HomeEmployer.aspx" />
+    <Content Include="Views\Employer\LoginEmployer.aspx" />
+    <Content Include="Views\Employer\RegisterEmployer.aspx" />
+    <Content Include="Views\Employer\ViewApplicant.aspx" />
+    <Content Include="Views\HomeBeforeLogin.aspx" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controller\ApplicantController.cs" />
+    <Compile Include="Controller\ApplymentDetailController.cs" />
+    <Compile Include="Controller\CategoryController.cs" />
+    <Compile Include="Controller\CommunityController.cs" />
+    <Compile Include="Controller\EmployerController.cs" />
+    <Compile Include="Controller\WorkController.cs" />
+    <Compile Include="Factory\ApplicantFactory.cs" />
+    <Compile Include="Factory\ApplymentDetailFactory.cs" />
+    <Compile Include="Factory\CommunityFactory.cs" />
+    <Compile Include="Factory\EmployerFactory.cs" />
+    <Compile Include="Factory\WorkFactory.cs" />
+    <Compile Include="Handler\ApplicantHandler.cs" />
+    <Compile Include="Handler\ApplymentDetailHandler.cs" />
+    <Compile Include="Handler\CategoryHandler.cs" />
+    <Compile Include="Handler\CommunityHandler.cs" />
+    <Compile Include="Handler\EmployerHandler.cs" />
+    <Compile Include="Handler\WorkHandler.cs" />
+    <Compile Include="Model\Applicants.cs">
+      <DependentUpon>WorksphereModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ApplymentDetail.cs">
+      <DependentUpon>WorksphereModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Category.cs">
+      <DependentUpon>WorksphereModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Community.cs">
+      <DependentUpon>WorksphereModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Employers.cs">
+      <DependentUpon>WorksphereModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Reply.cs">
+      <DependentUpon>WorksphereModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Work.cs">
+      <DependentUpon>WorksphereModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\WorksphereModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WorksphereModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\WorksphereModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WorksphereModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\WorksphereModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WorksphereModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Navbar.Master.cs">
+      <DependentUpon>Navbar.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Navbar.Master.designer.cs">
+      <DependentUpon>Navbar.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\ApplicantRepository.cs" />
+    <Compile Include="Repository\ApplymentDetailRepository.cs" />
+    <Compile Include="Repository\CategoryRepository.cs" />
+    <Compile Include="Repository\CommunityRepository.cs" />
+    <Compile Include="Repository\DatabaseSingleton.cs" />
+    <Compile Include="Repository\EmployerRepository.cs" />
+    <Compile Include="Repository\WorkRepository.cs" />
+    <Compile Include="Views\Applicant\ApplicantLogin.aspx.cs">
+      <DependentUpon>ApplicantLogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Applicant\ApplicantLogin.aspx.designer.cs">
+      <DependentUpon>ApplicantLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Applicant\ApplicantProfile.aspx.cs">
+      <DependentUpon>ApplicantProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Applicant\ApplicantProfile.aspx.designer.cs">
+      <DependentUpon>ApplicantProfile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Applicant\ApplicantRegister.aspx.cs">
+      <DependentUpon>ApplicantRegister.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Applicant\ApplicantRegister.aspx.designer.cs">
+      <DependentUpon>ApplicantRegister.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Applicant\CareerAdvice.aspx.cs">
+      <DependentUpon>CareerAdvice.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Applicant\CareerAdvice.aspx.designer.cs">
+      <DependentUpon>CareerAdvice.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Applicant\CommunityPage.aspx.cs">
+      <DependentUpon>CommunityPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Applicant\CommunityPage.aspx.designer.cs">
+      <DependentUpon>CommunityPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Applicant\HomeApplicant.aspx.cs">
+      <DependentUpon>HomeApplicant.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Applicant\HomeApplicant.aspx.designer.cs">
+      <DependentUpon>HomeApplicant.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Applicant\JobDetail.aspx.cs">
+      <DependentUpon>JobDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Applicant\JobDetail.aspx.designer.cs">
+      <DependentUpon>JobDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Applicant\SearchJob.aspx.cs">
+      <DependentUpon>SearchJob.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Applicant\SearchJob.aspx.designer.cs">
+      <DependentUpon>SearchJob.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Employer\AddJob.aspx.cs">
+      <DependentUpon>AddJob.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Employer\AddJob.aspx.designer.cs">
+      <DependentUpon>AddJob.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Employer\EmployerProfile.aspx.cs">
+      <DependentUpon>EmployerProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Employer\EmployerProfile.aspx.designer.cs">
+      <DependentUpon>EmployerProfile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Employer\HomeEmployer.aspx.cs">
+      <DependentUpon>HomeEmployer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Employer\HomeEmployer.aspx.designer.cs">
+      <DependentUpon>HomeEmployer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Employer\LoginEmployer.aspx.cs">
+      <DependentUpon>LoginEmployer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Employer\LoginEmployer.aspx.designer.cs">
+      <DependentUpon>LoginEmployer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Employer\RegisterEmployer.aspx.cs">
+      <DependentUpon>RegisterEmployer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Employer\RegisterEmployer.aspx.designer.cs">
+      <DependentUpon>RegisterEmployer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Employer\ViewApplicant.aspx.cs">
+      <DependentUpon>ViewApplicant.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Employer\ViewApplicant.aspx.designer.cs">
+      <DependentUpon>ViewApplicant.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\HomeBeforeLogin.aspx.cs">
+      <DependentUpon>HomeBeforeLogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\HomeBeforeLogin.aspx.designer.cs">
+      <DependentUpon>HomeBeforeLogin.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="Model\WorksphereModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>WorksphereModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Model\WorksphereModel.edmx.diagram">
+      <DependentUpon>WorksphereModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Navbar.Master" />
+    <None Include="packages.config" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>58570</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44356/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

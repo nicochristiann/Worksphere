@@ -1,0 +1,48 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Navbar.master.cs" Inherits="Worksphere.Navbar" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <link href="Style/master.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <div class="navbar">
+                <% if (Session["users"] != null && id.StartsWith("AP")) { %>
+                    <div class="feature-link">
+                       <img src="/Assets/WhatsApp Image 2024-06-09 at 15.36.46_7f28876c.jpg" alt="Worksphere" class="worksphere-logo"/>
+                       <asp:Button ID="Btn_HomeApplicant" runat="server" Text="Home" OnClick="Btn_Home_Click" CssClass="button-feature"/>
+                       <asp:Button ID="Btn_Search" runat="server" Text="Search Job" OnClick="Btn_Search_Click" CssClass="button-feature"/>
+                       <asp:Button ID="Btn_Community" runat="server" Text="Community" OnClick="Btn_Community_Click" CssClass="button-feature"/>
+                       <asp:Button ID="Btn_Career" runat="server" Text="Career Advice ↓" OnClick="Btn_Career_Click" CssClass="button-feature"/>
+                    </div>
+                    <div class="profile-link">
+                        <asp:Button ID="Btn_CV" runat="server" Text="Register Your CV" OnClick="Btn_CV_Click" CssClass="button-feature"/>
+                        <asp:Button ID="Btn_ProfileApplicant" runat="server" Text="Profile" OnClick="Btn_ProfileApplicant_Click" CssClass="button-feature"/>
+                    </div>
+                <%} else if (Session["users"] != null && id.StartsWith("EM")) { %>
+                     <div class="feature-link">
+                        <img src="/Assets/WhatsApp Image 2024-06-09 at 15.36.46_7f28876c.jpg" alt="Worksphere" class="worksphere-logo"/>
+                        <asp:Button ID="Btn_HomeEmployer" runat="server" Text="Home" OnClick="Btn_HomeEmployer_Click" CssClass="button-feature"/>
+                        <asp:Button ID="Btn_AddJob" runat="server" Text="Add Job" OnClick="Btn_AddJob_Click" CssClass="button-feature"/>
+                     </div>
+                     <div class="profile-link">
+                         <asp:Button ID="Btn_ProfileEmployer" runat="server" Text="Profile" OnClick="Btn_ProfileEmployer_Click" CssClass="button-feature"/>
+                     </div>
+                <%} %>
+            </div>
+
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+</body>
+</html>
