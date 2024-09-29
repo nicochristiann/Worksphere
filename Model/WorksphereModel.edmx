@@ -1,0 +1,615 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="WorksphereDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Applicants">
+          <Key>
+            <PropertyRef Name="ApplicantID" />
+          </Key>
+          <Property Name="ApplicantID" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="Name" Type="varchar(max)" Nullable="false" />
+          <Property Name="Age" Type="int" Nullable="false" />
+          <Property Name="Email" Type="varchar(max)" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PhoneNumber" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CV" Type="varbinary(max)" />
+          <Property Name="ProfilePicture" Type="varbinary(max)" />
+          <Property Name="Description" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ApplymentDetail">
+          <Key>
+            <PropertyRef Name="ApplymentID" />
+          </Key>
+          <Property Name="ApplymentID" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="ApplicantID" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="WorkID" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="ApplyDate" Type="date" Nullable="false" />
+          <Property Name="Status" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="CategoryID" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="CategoryName" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Community">
+          <Key>
+            <PropertyRef Name="CommunityID" />
+          </Key>
+          <Property Name="CommunityID" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="ApplicantID" Type="char" MaxLength="5" />
+          <Property Name="EmployerID" Type="char" MaxLength="5" />
+          <Property Name="Description" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Employers">
+          <Key>
+            <PropertyRef Name="EmployerID" />
+          </Key>
+          <Property Name="EmployerID" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="CompanyName" Type="varchar(max)" Nullable="false" />
+          <Property Name="CompanyEmail" Type="varchar(max)" Nullable="false" />
+          <Property Name="UserName" Type="varchar(max)" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CompanyAddress" Type="varchar(max)" Nullable="false" />
+          <Property Name="CompanyLogo" Type="varbinary(max)" />
+          <Property Name="PhoneNumber" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CompanyType" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'D:\BINUS\SEMESTER 4\SOFTENG\PROJEK_SE\WORKSPHERE\APP_DATA\WORKSPHEREDB.MDF.dbo.Reply' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Reply">
+          <Key>
+            <PropertyRef Name="CommunityID" />
+            <PropertyRef Name="ApplicantID" />
+            <PropertyRef Name="EmployerID" />
+            <PropertyRef Name="Reply" />
+          </Key>
+          <Property Name="CommunityID" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="ApplicantID" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="EmployerID" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="Reply" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Work">
+          <Key>
+            <PropertyRef Name="WorkID" />
+          </Key>
+          <Property Name="WorkID" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="WorkTitle" Type="varchar(max)" Nullable="false" />
+          <Property Name="WorkDescription" Type="varchar(max)" Nullable="false" />
+          <Property Name="WorkType" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Keyword" Type="varchar(max)" Nullable="false" />
+          <Property Name="CategoryID" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="EmployerID" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="Salary" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_ApplyDetail_Applicant">
+          <End Role="Applicants" Type="Self.Applicants" Multiplicity="1" />
+          <End Role="ApplymentDetail" Type="Self.ApplymentDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Applicants">
+              <PropertyRef Name="ApplicantID" />
+            </Principal>
+            <Dependent Role="ApplymentDetail">
+              <PropertyRef Name="ApplicantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ApplyDetail_Work">
+          <End Role="Work" Type="Self.Work" Multiplicity="1" />
+          <End Role="ApplymentDetail" Type="Self.ApplymentDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Work">
+              <PropertyRef Name="WorkID" />
+            </Principal>
+            <Dependent Role="ApplymentDetail">
+              <PropertyRef Name="WorkID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Community_Applicants">
+          <End Role="Applicants" Type="Self.Applicants" Multiplicity="0..1" />
+          <End Role="Community" Type="Self.Community" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Applicants">
+              <PropertyRef Name="ApplicantID" />
+            </Principal>
+            <Dependent Role="Community">
+              <PropertyRef Name="ApplicantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Community_Employers">
+          <End Role="Employers" Type="Self.Employers" Multiplicity="0..1" />
+          <End Role="Community" Type="Self.Community" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employers">
+              <PropertyRef Name="EmployerID" />
+            </Principal>
+            <Dependent Role="Community">
+              <PropertyRef Name="EmployerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reply_Applicants">
+          <End Role="Applicants" Type="Self.Applicants" Multiplicity="1" />
+          <End Role="Reply" Type="Self.Reply" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Applicants">
+              <PropertyRef Name="ApplicantID" />
+            </Principal>
+            <Dependent Role="Reply">
+              <PropertyRef Name="ApplicantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reply_Community">
+          <End Role="Community" Type="Self.Community" Multiplicity="1" />
+          <End Role="Reply" Type="Self.Reply" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Community">
+              <PropertyRef Name="CommunityID" />
+            </Principal>
+            <Dependent Role="Reply">
+              <PropertyRef Name="CommunityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reply_Employers">
+          <End Role="Employers" Type="Self.Employers" Multiplicity="1" />
+          <End Role="Reply" Type="Self.Reply" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employers">
+              <PropertyRef Name="EmployerID" />
+            </Principal>
+            <Dependent Role="Reply">
+              <PropertyRef Name="EmployerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Work_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="Work" Type="Self.Work" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryID" />
+            </Principal>
+            <Dependent Role="Work">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Work_Employer">
+          <End Role="Employers" Type="Self.Employers" Multiplicity="1" />
+          <End Role="Work" Type="Self.Work" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employers">
+              <PropertyRef Name="EmployerID" />
+            </Principal>
+            <Dependent Role="Work">
+              <PropertyRef Name="EmployerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="WorksphereDBModelStoreContainer">
+          <EntitySet Name="Applicants" EntityType="Self.Applicants" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ApplymentDetail" EntityType="Self.ApplymentDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Community" EntityType="Self.Community" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employers" EntityType="Self.Employers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Work" EntityType="Self.Work" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Reply" EntityType="Self.Reply" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Reply].[CommunityID] AS [CommunityID], 
+    [Reply].[ApplicantID] AS [ApplicantID], 
+    [Reply].[EmployerID] AS [EmployerID], 
+    [Reply].[Reply] AS [Reply]
+    FROM [dbo].[Reply] AS [Reply]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_ApplyDetail_Applicant" Association="Self.FK_ApplyDetail_Applicant">
+            <End Role="Applicants" EntitySet="Applicants" />
+            <End Role="ApplymentDetail" EntitySet="ApplymentDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ApplyDetail_Work" Association="Self.FK_ApplyDetail_Work">
+            <End Role="Work" EntitySet="Work" />
+            <End Role="ApplymentDetail" EntitySet="ApplymentDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Community_Applicants" Association="Self.FK_Community_Applicants">
+            <End Role="Applicants" EntitySet="Applicants" />
+            <End Role="Community" EntitySet="Community" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Community_Employers" Association="Self.FK_Community_Employers">
+            <End Role="Employers" EntitySet="Employers" />
+            <End Role="Community" EntitySet="Community" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reply_Applicants" Association="Self.FK_Reply_Applicants">
+            <End Role="Applicants" EntitySet="Applicants" />
+            <End Role="Reply" EntitySet="Reply" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reply_Community" Association="Self.FK_Reply_Community">
+            <End Role="Community" EntitySet="Community" />
+            <End Role="Reply" EntitySet="Reply" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reply_Employers" Association="Self.FK_Reply_Employers">
+            <End Role="Employers" EntitySet="Employers" />
+            <End Role="Reply" EntitySet="Reply" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Work_Category" Association="Self.FK_Work_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Work" EntitySet="Work" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Work_Employer" Association="Self.FK_Work_Employer">
+            <End Role="Employers" EntitySet="Employers" />
+            <End Role="Work" EntitySet="Work" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="WorksphereDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ApplymentDetail">
+          <Key>
+            <PropertyRef Name="ApplymentID" />
+          </Key>
+          <Property Name="ApplymentID" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="ApplicantID" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="WorkID" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="ApplyDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Work" Relationship="Self.FK_ApplyDetail_Work" FromRole="ApplymentDetail" ToRole="Work" />
+          <NavigationProperty Name="Applicant" Relationship="WorksphereDBModel.FK_ApplyDetail_Applicant" FromRole="ApplymentDetail" ToRole="Applicant" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="CategoryID" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="CategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Works" Relationship="Self.FK_Work_Category" FromRole="Category" ToRole="Work" />
+        </EntityType>
+        <EntityType Name="Work">
+          <Key>
+            <PropertyRef Name="WorkID" />
+          </Key>
+          <Property Name="WorkID" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="WorkTitle" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="WorkDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="WorkType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Keyword" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CategoryID" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="EmployerID" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Salary" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ApplymentDetails" Relationship="Self.FK_ApplyDetail_Work" FromRole="Work" ToRole="ApplymentDetail" />
+          <NavigationProperty Name="Category" Relationship="Self.FK_Work_Category" FromRole="Work" ToRole="Category" />
+          <NavigationProperty Name="Employer" Relationship="WorksphereDBModel.FK_Work_Employer" FromRole="Work" ToRole="Employer" />
+        </EntityType>
+        <Association Name="FK_ApplyDetail_Work">
+          <End Role="Work" Type="Self.Work" Multiplicity="1" />
+          <End Role="ApplymentDetail" Type="Self.ApplymentDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Work">
+              <PropertyRef Name="WorkID" />
+            </Principal>
+            <Dependent Role="ApplymentDetail">
+              <PropertyRef Name="WorkID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Work_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="Work" Type="Self.Work" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryID" />
+            </Principal>
+            <Dependent Role="Work">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="WorksphereDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ApplymentDetails" EntityType="Self.ApplymentDetail" />
+          <EntitySet Name="Categories" EntityType="Self.Category" />
+          <EntitySet Name="Works" EntityType="Self.Work" />
+          <AssociationSet Name="FK_ApplyDetail_Work" Association="Self.FK_ApplyDetail_Work">
+            <End Role="Work" EntitySet="Works" />
+            <End Role="ApplymentDetail" EntitySet="ApplymentDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Work_Category" Association="Self.FK_Work_Category">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Work" EntitySet="Works" />
+          </AssociationSet>
+          <EntitySet Name="Employers1" EntityType="WorksphereDBModel.Employers" />
+          <AssociationSet Name="FK_Work_Employer" Association="WorksphereDBModel.FK_Work_Employer">
+            <End EntitySet="Employers1" Role="Employer" />
+            <End EntitySet="Works" Role="Work" />
+          </AssociationSet>
+          <EntitySet Name="Applicants1" EntityType="WorksphereDBModel.Applicants" />
+          <AssociationSet Name="FK_ApplyDetail_Applicant" Association="WorksphereDBModel.FK_ApplyDetail_Applicant">
+            <End Role="Applicant" EntitySet="Applicants1" />
+            <End Role="ApplymentDetail" EntitySet="ApplymentDetails" />
+          </AssociationSet>
+          <EntitySet Name="Communities" EntityType="WorksphereDBModel.Community" />
+          <EntitySet Name="Replies" EntityType="WorksphereDBModel.Reply" />
+          <AssociationSet Name="FK_Community_Applicants" Association="WorksphereDBModel.FK_Community_Applicants">
+            <End Role="Applicants" EntitySet="Applicants1" />
+            <End Role="Community" EntitySet="Communities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reply_Applicants" Association="WorksphereDBModel.FK_Reply_Applicants">
+            <End Role="Applicants" EntitySet="Applicants1" />
+            <End Role="Reply" EntitySet="Replies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Community_Employers" Association="WorksphereDBModel.FK_Community_Employers">
+            <End Role="Employers" EntitySet="Employers1" />
+            <End Role="Community" EntitySet="Communities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reply_Community" Association="WorksphereDBModel.FK_Reply_Community">
+            <End Role="Community" EntitySet="Communities" />
+            <End Role="Reply" EntitySet="Replies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reply_Employers" Association="WorksphereDBModel.FK_Reply_Employers">
+            <End Role="Employers" EntitySet="Employers1" />
+            <End Role="Reply" EntitySet="Replies" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Employers">
+          <Key>
+            <PropertyRef Name="EmployerID" />
+          </Key>
+          <Property Name="EmployerID" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" Type="String" />
+          <Property Name="CompanyName" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="CompanyEmail" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="UserName" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="Password" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="CompanyAddress" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="CompanyLogo" MaxLength="Max" FixedLength="false" Type="Binary" />
+          <Property Name="PhoneNumber" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="CompanyType" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+          <NavigationProperty Name="Works" Relationship="WorksphereDBModel.FK_Work_Employer" FromRole="Employer" ToRole="Work" />
+          <NavigationProperty Name="Communities" Relationship="WorksphereDBModel.FK_Community_Employers" FromRole="Employers" ToRole="Community" />
+          <NavigationProperty Name="Replies" Relationship="WorksphereDBModel.FK_Reply_Employers" FromRole="Employers" ToRole="Reply" />
+        </EntityType>
+        <Association Name="FK_Work_Employer">
+          <End Type="WorksphereDBModel.Employers" Multiplicity="1" Role="Employer" />
+          <End Type="WorksphereDBModel.Work" Multiplicity="*" Role="Work" />
+          <ReferentialConstraint>
+            <Principal Role="Employer">
+              <PropertyRef Name="EmployerID" />
+            </Principal>
+            <Dependent Role="Work">
+              <PropertyRef Name="EmployerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Applicants">
+          <Key>
+            <PropertyRef Name="ApplicantID" />
+          </Key>
+          <Property Name="ApplicantID" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Age" Type="Int32" Nullable="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CV" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ProfilePicture" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ApplymentDetails" Relationship="WorksphereDBModel.FK_ApplyDetail_Applicant" FromRole="Applicant" ToRole="ApplymentDetail" />
+          <NavigationProperty Name="Communities" Relationship="WorksphereDBModel.FK_Community_Applicants" FromRole="Applicants" ToRole="Community" />
+          <NavigationProperty Name="Replies" Relationship="WorksphereDBModel.FK_Reply_Applicants" FromRole="Applicants" ToRole="Reply" />
+        </EntityType>
+        <Association Name="FK_ApplyDetail_Applicant">
+          <End Type="WorksphereDBModel.Applicants" Role="Applicant" Multiplicity="1" />
+          <End Type="WorksphereDBModel.ApplymentDetail" Role="ApplymentDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Applicant">
+              <PropertyRef Name="ApplicantID" />
+            </Principal>
+            <Dependent Role="ApplymentDetail">
+              <PropertyRef Name="ApplicantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Community">
+          <Key>
+            <PropertyRef Name="CommunityID" />
+          </Key>
+          <Property Name="CommunityID" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="ApplicantID" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="EmployerID" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Applicant" Relationship="WorksphereDBModel.FK_Community_Applicants" FromRole="Community" ToRole="Applicants" />
+          <NavigationProperty Name="Employer" Relationship="WorksphereDBModel.FK_Community_Employers" FromRole="Community" ToRole="Employers" />
+          <NavigationProperty Name="Replies" Relationship="WorksphereDBModel.FK_Reply_Community" FromRole="Community" ToRole="Reply" />
+        </EntityType>
+        <EntityType Name="Reply">
+          <Key>
+            <PropertyRef Name="CommunityID" />
+            <PropertyRef Name="ApplicantID" />
+            <PropertyRef Name="EmployerID" />
+            <PropertyRef Name="Reply1" />
+          </Key>
+          <Property Name="CommunityID" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="ApplicantID" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="EmployerID" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="Reply1" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Applicant" Relationship="WorksphereDBModel.FK_Reply_Applicants" FromRole="Reply" ToRole="Applicants" />
+          <NavigationProperty Name="Community" Relationship="WorksphereDBModel.FK_Reply_Community" FromRole="Reply" ToRole="Community" />
+          <NavigationProperty Name="Employer" Relationship="WorksphereDBModel.FK_Reply_Employers" FromRole="Reply" ToRole="Employers" />
+        </EntityType>
+        <Association Name="FK_Community_Applicants">
+          <End Type="WorksphereDBModel.Applicants" Role="Applicants" Multiplicity="0..1" />
+          <End Type="WorksphereDBModel.Community" Role="Community" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Applicants">
+              <PropertyRef Name="ApplicantID" />
+            </Principal>
+            <Dependent Role="Community">
+              <PropertyRef Name="ApplicantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reply_Applicants">
+          <End Type="WorksphereDBModel.Applicants" Role="Applicants" Multiplicity="1" />
+          <End Type="WorksphereDBModel.Reply" Role="Reply" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Applicants">
+              <PropertyRef Name="ApplicantID" />
+            </Principal>
+            <Dependent Role="Reply">
+              <PropertyRef Name="ApplicantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Community_Employers">
+          <End Type="WorksphereDBModel.Employers" Role="Employers" Multiplicity="0..1" />
+          <End Type="WorksphereDBModel.Community" Role="Community" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employers">
+              <PropertyRef Name="EmployerID" />
+            </Principal>
+            <Dependent Role="Community">
+              <PropertyRef Name="EmployerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reply_Community">
+          <End Type="WorksphereDBModel.Community" Role="Community" Multiplicity="1" />
+          <End Type="WorksphereDBModel.Reply" Role="Reply" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Community">
+              <PropertyRef Name="CommunityID" />
+            </Principal>
+            <Dependent Role="Reply">
+              <PropertyRef Name="CommunityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reply_Employers">
+          <End Type="WorksphereDBModel.Employers" Role="Employers" Multiplicity="1" />
+          <End Type="WorksphereDBModel.Reply" Role="Reply" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employers">
+              <PropertyRef Name="EmployerID" />
+            </Principal>
+            <Dependent Role="Reply">
+              <PropertyRef Name="EmployerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="WorksphereDBModelStoreContainer" CdmEntityContainer="WorksphereDBEntities">
+          <EntitySetMapping Name="ApplymentDetails">
+            <EntityTypeMapping TypeName="WorksphereDBModel.ApplymentDetail">
+              <MappingFragment StoreEntitySet="ApplymentDetail">
+                <ScalarProperty Name="ApplymentID" ColumnName="ApplymentID" />
+                <ScalarProperty Name="ApplicantID" ColumnName="ApplicantID" />
+                <ScalarProperty Name="WorkID" ColumnName="WorkID" />
+                <ScalarProperty Name="ApplyDate" ColumnName="ApplyDate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="WorksphereDBModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Works">
+            <EntityTypeMapping TypeName="WorksphereDBModel.Work">
+              <MappingFragment StoreEntitySet="Work">
+                <ScalarProperty Name="WorkID" ColumnName="WorkID" />
+                <ScalarProperty Name="WorkTitle" ColumnName="WorkTitle" />
+                <ScalarProperty Name="WorkDescription" ColumnName="WorkDescription" />
+                <ScalarProperty Name="WorkType" ColumnName="WorkType" />
+                <ScalarProperty Name="Keyword" ColumnName="Keyword" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="EmployerID" ColumnName="EmployerID" />
+                <ScalarProperty Name="Salary" ColumnName="Salary" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employers1">
+            <EntityTypeMapping TypeName="WorksphereDBModel.Employers">
+              <MappingFragment StoreEntitySet="Employers">
+                <ScalarProperty Name="CompanyType" ColumnName="CompanyType" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="CompanyLogo" ColumnName="CompanyLogo" />
+                <ScalarProperty Name="CompanyAddress" ColumnName="CompanyAddress" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="CompanyEmail" ColumnName="CompanyEmail" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="EmployerID" ColumnName="EmployerID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Applicants1">
+            <EntityTypeMapping TypeName="WorksphereDBModel.Applicants">
+              <MappingFragment StoreEntitySet="Applicants">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ProfilePicture" ColumnName="ProfilePicture" />
+                <ScalarProperty Name="CV" ColumnName="CV" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ApplicantID" ColumnName="ApplicantID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Communities">
+            <EntityTypeMapping TypeName="WorksphereDBModel.Community">
+              <MappingFragment StoreEntitySet="Community">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="EmployerID" ColumnName="EmployerID" />
+                <ScalarProperty Name="ApplicantID" ColumnName="ApplicantID" />
+                <ScalarProperty Name="CommunityID" ColumnName="CommunityID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Replies">
+            <EntityTypeMapping TypeName="WorksphereDBModel.Reply">
+              <MappingFragment StoreEntitySet="Reply">
+                <ScalarProperty Name="Reply1" ColumnName="Reply" />
+                <ScalarProperty Name="EmployerID" ColumnName="EmployerID" />
+                <ScalarProperty Name="ApplicantID" ColumnName="ApplicantID" />
+                <ScalarProperty Name="CommunityID" ColumnName="CommunityID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

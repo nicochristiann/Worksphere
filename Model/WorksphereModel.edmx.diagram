@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="fbeafd8582ff4515903f9b07a581d2f5" Name="Diagram1">
+        <EntityTypeShape EntityType="WorksphereDBModel.ApplymentDetail" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="WorksphereDBModel.Category" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WorksphereDBModel.Work" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="WorksphereDBModel.FK_ApplyDetail_Work" ManuallyRouted="false" />
+        <AssociationConnector Association="WorksphereDBModel.FK_Work_Category" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="WorksphereDBModel.Employers" PointX="3" PointY="5" Width="1.5" />
+        <AssociationConnector Association="WorksphereDBModel.FK_Work_Employer" />
+        <EntityTypeShape EntityType="WorksphereDBModel.Applicants" Width="1.5" PointX="8.25" PointY="1.5" />
+        <AssociationConnector Association="WorksphereDBModel.FK_ApplyDetail_Applicant" />
+        <EntityTypeShape EntityType="WorksphereDBModel.Community" Width="1.5" PointX="8.375" PointY="6.25" />
+        <EntityTypeShape EntityType="WorksphereDBModel.Reply" Width="1.5" PointX="11.75" PointY="6" />
+        <AssociationConnector Association="WorksphereDBModel.FK_Community_Applicants" />
+        <AssociationConnector Association="WorksphereDBModel.FK_Reply_Applicants" />
+        <AssociationConnector Association="WorksphereDBModel.FK_Community_Employers" />
+        <AssociationConnector Association="WorksphereDBModel.FK_Reply_Community" />
+        <AssociationConnector Association="WorksphereDBModel.FK_Reply_Employers" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
